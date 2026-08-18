@@ -1,0 +1,68 @@
+<div class="relative overflow-x-auto shadow-md sm:rounded-lg">
+    <table class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
+      <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+        <tr>
+          <th scope="col" class="px-16 py-3">
+            <span class="sr-only">Image</span>
+          </th>
+          <th scope="col" class=" py-3">
+            Product
+          </th>
+          <th scope="col" class=" py-3">
+            Qty
+          </th>
+          <th scope="col" class=" py-3">
+            Price
+          </th>
+          <th scope="col" class=" py-3">
+            Action
+          </th>
+        </tr>
+      </thead>
+      <tbody>
+        @for (item of cartdetails.products; track item.product._id) {
+          <tr class=" border-b dark:bg-gray-800  hover:bg-gray-50 dark:hover:bg-gray-600">
+            <td class="p-4">
+              <img [src]="item.product.imageCover" class="w-16 md:w-32 max-w-full max-h-full" [alt]="item.product.title">
+            </td>
+            <td class="font-semibold text-gray-900 dark:text-white">
+              {{ item.product.title }}
+            </td>
+            <td class="px-6 py-4">
+              <div class="flex items-center">
+                <button (click)="updateCount(item.product._id,item.count-1)" class="inline-flex items-center justify-center p-1 text-sm font-medium h-6 w-6 text-gray-500 bg-white border border-gray-300 rounded-full focus:outline-none hover:bg-gray-100 focus:ring-4 focus:ring-gray-200 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:bg-gray-700 dark:hover:border-gray-600 dark:focus:ring-gray-700" type="button">
+                  <span class="sr-only">k</span>
+                  <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 18 2">
+                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 1h16"/>
+                  </svg>
+        </button>
+                <div class="ms-3 w-14 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block px-2.5 py-1  dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+
+                  
+                </div>
+                <button (click)="updateCount(item.product._id,item.count+1)" class="inline-flex items-center justify-center h-6 w-6 p-1 ms-3 text-sm font-medium text-gray-500 bg-white border border-gray-300 rounded-full focus:outline-none hover:bg-gray-100 focus:ring-4 focus:ring-gray-200 dark:bg-fuchsia-700 dark:text-gray-400 dark:border-gray-600 dark:hover:bg-gray-700 dark:hover:border-gray-600 dark:focus:ring-gray-700" type="button">
+                  <span class="sr-only">Quantity button</span>
+                  <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 18 18">
+                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 1v16M1 9h16"/>
+                  </svg>
+                         </button>
+              </div>
+            </td>
+          
+            <td class="px-6 py-4">
+              <button (click)="removeItem(item.product._id)" class="font-medium text-red-600 dark:text-red-500 hover:underline">Remove</button>
+            </td>
+          </tr>
+        }
+      </tbody>
+    </table>
+
+    <button type="button" (click)="removecartItems()" class="focus:outline-none text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:ring-red-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-800">delet cart</button>
+
+    <div class="flex items-center justify-end space-x-2">
+      <!-- <button type="button" (click)="checkout()" class="font-medium text-white bg-blue-700 hover:bg-blue-800 focus:outline-none focus:ring-4 focus:ring-blue-300 rounded-lg text-sm px-5 py-2.5 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">checkout</button>
+      <p class="text-gray-500 dark:text-gray-400">Total: {{ totalPrice | currency: 'GBP' }}</p> -->
+  
+      <button type="button" [routerLink]="['/orders' , cartdetails._id]" class="focus:outline-none text-white bg-purple-700 hover:bg-purple-800 focus:ring-4 focus:ring-purple-300 font-medium rounded-lg text-sm px-5 py-2.5 mb-2 dark:bg-purple-600 dark:hover:bg-purple-700 dark:focus:ring-purple-900">orders</button>
+  </div>
+</div>

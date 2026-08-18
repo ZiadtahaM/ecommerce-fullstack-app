@@ -1,0 +1,19 @@
+<!-- llllll   -->
+<!-- 
+<ng-container *ngFor="let cat of categorislist; trackBy: trackByFn">
+  <ng-template carouselSlide>
+    <img [src]="cat.image" class="w-full p-2 overflow-hidden h-48 md:h-64 lg:h-80 object-cover rounded-lg" [alt]="cat.name">
+  </ng-template>
+</ng-container> -->
+<section class="my-2">
+  <h1 class="text-3xl font-bold mb-4">Popular Categories</h1>
+  <owl-carousel-o [options]="customOptionscat">
+    @for (item of categorislist ; track item._id) {
+      <ng-template carouselSlide>
+        <img [src]="item.image" class="w-full p-2 overflow-hidden h-48 md:h-64 lg:h-80 object-cover rounded-lg" [alt]="item.name">
+      </ng-template>
+    }
+    </owl-carousel-o>
+</section>
+
+

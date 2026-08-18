@@ -1,0 +1,18 @@
+<section class="bg-gray-100 rounded-lg shadow-md p-2 my-2 w-75 mx-auto">
+    <h1 class="text-center text-2xl font-bold">Shipping Address</h1>
+    <form class="space-y-2" [formGroup]="orders" (ngSubmit)="ordersubmet()">
+      <div class="flex flex-col">
+        <label for="details" class="text-gray-700 font-semibold">Details</label>
+        <textarea formControlName="details" id="details" class="border rounded-md p-2 focus:outline-none focus:ring-2 focus:ring-blue-500" rows="3"></textarea>
+      </div>
+      <div class="flex flex-col">
+        <label for="phone" class="text-gray-700 font-semibold">Phone</label>
+        <input formControlName="phone" id="phone" type="tel" class="border rounded-md p-2 focus:outline-none focus:ring-2 focus:ring-blue-500">
+      </div>
+      <div class="flex flex-col">
+        <label for="city" class="text-gray-700 font-semibold">City</label>
+        <input formControlName="city" id="city" type="text" class="border rounded-md p-2 focus:outline-none focus:ring-2 focus:ring-blue-500">
+      </div>
+      <button class="bg-blue-500 text-white font-bold rounded-md p-2 hover:bg-blue-600">Check Out</button>
+    </form>
+  </section>
