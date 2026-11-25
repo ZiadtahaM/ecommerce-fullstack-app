@@ -1,27 +1,44 @@
-# Ecommerce
+# Angular SSR storefront
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 17.3.8.
+An Angular 17 frontend for a storefront, using RouteMisr's external e-commerce API. The backend and payment processing are not implemented in this repository.
 
-## Development server
+## What is here
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+- Standalone Angular components for products, categories, brands and product details
+- Login/register screens, route guards, cart, wishlist and order screens
+- Angular SSR configuration with an Express entry point and client hydration
+- TypeScript, Tailwind CSS, PrimeNG and Flowbite
 
-## Code scaffolding
+This is a learning and portfolio project. The presence of checkout screens does not prove a working payment integration. External API availability, authentication and account requirements affect the flows. No production customer results or live checkout verification are claimed.
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+## Run locally
 
-## Build
+Use a Node.js version compatible with Angular 17, then:
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+```bash
+npm ci
+npm start
+```
 
-## Running unit tests
+The development server normally runs at `http://localhost:4200`. API configuration is in `src/app/core/environments/environments.ts`. Use your own test account and keep credentials out of commits.
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+## Build and SSR
 
-## Running end-to-end tests
+```bash
+npm run build
+npm run serve:ssr:ecommerce
+```
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+The second command starts the generated Node SSR server after a successful build. Test browser-only behavior and authenticated routes separately; having SSR configured does not mean every authenticated page renders server-side.
 
-## Further help
+## Tests
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+```bash
+npm test
+```
+
+This runs the configured Angular/Karma tests. No new passing test count or browser/payment test result is claimed in this README update.
+
+## Implementation notes
+
+[Article: Angular SSR on a third-party API](https://dev.to/ziadtaha/i-built-an-angular-17-ssr-storefront-on-a-third-party-api-heres-what-ssr-actually-changes-with-548d).
